@@ -51,6 +51,8 @@ var update = function(data) {
   // debugger;
   var enemies = gameBoard.selectAll('circle.enemy')
     .data(data);
+    
+    console.log('1', enemies);
 
   enemies.enter()
     .append('circle')
@@ -58,8 +60,10 @@ var update = function(data) {
     .attr('r', fatness)
     .attr('fill', 'red')
     .attr('opacity', 0.3)
-    .attr('cx', d => d.x)
-    .attr('cy', d => d.y);
+    .attr('cx', thisenemy => thisenemy.x)
+    .attr('cy', thisenemy => thisenemy.y);
+    
+    console.log('2', enemies);
 
   // update position of circle
   
@@ -70,10 +74,14 @@ var update = function(data) {
     .attr('opacity', 1)
     .attr('cx', () => randx())
     .attr('cy', () => randy());
+    
+    console.log('3', enemies);
 
   // console.log('game', gameBoard.selectAll('circle.enemy'));
 
   enemies.exit().remove();
+  
+  console.log('4', enemies);
 };
 
   // update(enemy_data);
